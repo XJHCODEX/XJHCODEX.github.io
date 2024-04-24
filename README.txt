@@ -10,12 +10,7 @@ Welcome to my portfolio site! This site showcases my projects and provides conta
 
 Technologies Used
 
-- HTML5
-- CSS3
-- JavaScript
-- jQuery
-- Bootstrap
-- Git
+`HTML5` `CSS3` `JavaScript` `JQuery` `Bootstrap` `Git`
 
 Features
 
