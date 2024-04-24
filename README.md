@@ -1,7 +1,3 @@
-Here's a README template for your portfolio site:
-
----
-
 Jeremy Hernandez's Portfolio
 
 Overview
