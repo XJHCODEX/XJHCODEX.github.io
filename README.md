@@ -20,7 +20,6 @@ How to Use
 
 Get in Touch
 
-- **Phone**: (646) 821-5408
 - **Email**: Jeremyhernandez.r@gmail.com
 - **LinkedIn**: [Jeremy Hernandez's LinkedIn Profile](https://www.linkedin.com/in/jeremy-hernandez-1637ab229/)
 - **GitHub**: [Jeremy Hernandez's GitHub Profile](https://github.com/XJHCODEX)
