@@ -1,6 +1,6 @@
-Jeremy Hernandez's Portfolio
+## Jeremy Hernandez's Portfolio
 
-Overview
+## Overview
 
 Welcome to my portfolio site! This site showcases my projects and provides contact information for reaching out to me.
 
