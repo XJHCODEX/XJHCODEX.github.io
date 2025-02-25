@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeremy Hernandez - Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 <body>
+
+<!-- Animated Background -->
+<div class="background-gradient"></div>
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
@@ -18,33 +23,76 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="#">Projects</a></li>
-                <li class="nav-item"><a class="nav-link" href="https://github.com/XJHCODEX" target="_blank">GitHub</a></li>
-                <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/jeremy-hernandez-1637ab229/" target="_blank">LinkedIn</a></li>
+                <!-- Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="optionsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Options
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="optionsDropdown">
+                        <li><a class="dropdown-item" href="#">Projects</a></li>
+                        <li><a class="dropdown-item" href="https://github.com/XJHCODEX" target="_blank">GitHub</a></li>
+                        <li><a class="dropdown-item" href="https://www.linkedin.com/in/jeremy-hernandez-1637ab229/" target="_blank">LinkedIn</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 
-<!-- Hero Section -->
-<header class="bg-dark text-white text-center py-5">
+<!-- Hero Section with Animated Gradient -->
+<header class="text-white text-center py-5 hero-section">
     <div class="container">
-        <h1 class="display-4">Welcome to My Portfolio</h1>
-        <p class="lead">Showcasing My Projects and Coding Journey</p>
-        <a href="#projects" class="btn btn-primary btn-lg">Explore Projects</a>
+        <h1 class="display-4 animate__animated animate__fadeInDown">Welcome to My Portfolio</h1>
+        <p class="lead animate__animated animate__fadeInUp">Showcasing My Projects and Coding Journey</p>
+        <a href="#projects" class="btn btn-primary btn-lg animate__animated animate__zoomIn">Explore Projects</a>
     </div>
 </header>
 
 <!-- Projects Section -->
 <section id="projects" class="py-5">
     <div class="container">
-        <h2 class="text-center mb-4">Projects</h2>
+        <h2 class="text-center mb-4"></h2>
         <div class="row g-4">
 
-            <!-- Project Card -->
+            <!-- Project Cards -->
+            <div class="col-md-4" data-sr="enter left">
+                <div class="card h-100 shadow">
+                    <img src="images/zenvault.png" class="card-img-top" alt="ZenVault">
+                    <div class="card-body">
+                        <h5 class="card-title">ZenVault</h5>
+                        <p class="card-text">A secure and scalable cloud-based file storage system deployed on Oracle Cloud Free Tier.</p>
+                        <a href="https://github.com/XJHCODEX/ZenVault" target="_blank" class="btn btn-outline-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4" data-sr="enter bottom">
+                <div class="card h-100 shadow">
+                    <img src="images/ChatBox.jpg" class="card-img-top" alt="ChatBox">
+                    <div class="card-body">
+                        <h5 class="card-title">ChatBox</h5>
+                        <p class="card-text">This project is designed to demonstrate the implementation of real-time communication features using Django Channels.</p>
+                        <a href="https://github.com/XJHCODEX/ChatBox" target="_blank" class="btn btn-outline-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4" data-sr="enter right">
+                <div class="card h-100 shadow">
+                    <img src="images/SakeBot.jpg" class="card-img-top" alt="SakeBot">
+                    <div class="card-body">
+                        <h5 class="card-title">SakeBot</h5>
+                        <p class="card-text">SakeBot is a Discord bot designed to provide various commands and functionalities to users in a Discord server.</p>
+                        <a href="https://github.com/XJHCODEX/SakeBot" target="_blank" class="btn btn-outline-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+
+						<!-- Other Projects -->
+
             <div class="col-md-4">
                 <div class="card h-100 shadow">
-                    <img src="https://ychef.files.bbci.co.uk/1600x900/p0ff8hmx.webp" class="card-img-top" alt="Eliza Project">
+                    <img src="https://ychef.files.bbci.co.uk/1600x900/p0ff8hmx.webp" class="card-img-top" alt="Eliza Project" width="200" height="300">
                     <div class="card-body">
                         <h5 class="card-title">Eliza Chatbot</h5>
                         <p class="card-text">A Java-based chatbot program that engages in meaningful conversations with users.</p>
@@ -53,7 +101,38 @@
                 </div>
             </div>
 
-            <!-- Additional project cards can be added here -->
+            <div class="col-md-4">
+                <div class="card h-100 shadow">
+                    <img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2021/05/20061Titanic.jpg" class="card-img-top" alt="Titanic Project" width="200" height="300">
+                    <div class="card-body">
+                        <h5 class="card-title">Titanic Machine Learning Project</h5>
+                        <p class="card-text">Analyze the Titanic dataset using machine learning to predict survival chances.</p>
+                        <a href="https://github.com/XJHCODEX/COLLEGE-PROJECTS/blob/main/Titanic%20project.ipynb" target="_blank" class="btn btn-outline-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow">
+                    <img src="https://img.freepik.com/premium-photo/data-management-system-dms-with-business-analytics-concept_103164-71.jpg" class="card-img-top" alt="Company Database" width="200" height="300">
+                    <div class="card-body">
+                        <h5 class="card-title">CS Lab Company Database</h5>
+                        <p class="card-text">Creation of a SQL database for managing company data, including CRUD operations.</p>
+                        <a href="https://github.com/XJHCODEX/COLLEGE-PROJECTS/blob/main/Final_Project.sql" target="_blank" class="btn btn-outline-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow">
+                    <img src="https://www.wildapricot.com/wp-content/uploads/2022/04/WA-Blog-Thumbnails-Feb.png" class="card-img-top" alt="LetsGoProject" width="200" height="300">
+                    <div class="card-body">
+                        <h5 class="card-title">LetsGoProject</h5>
+                        <p class="card-text">Web application for event planning, developed using full-stack technologies.</p>
+                        <a href="https://github.com/XJHCODEX/LetsGoProject/tree/main" target="_blank" class="btn btn-outline-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -66,5 +145,16 @@
 
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Initialize ScrollReveal animations
+    ScrollReveal().reveal('[data-sr]', { duration: 1000, distance: '50px', easing: 'ease-out' });
+
+    // Add gradient animation to the hero section
+    const heroSection = document.querySelector('.hero-section');
+    window.addEventListener('scroll', () => {
+        heroSection.style.backgroundPositionY = `${window.scrollY * 0.5}px`;
+    });
+</script>
+
 </body>
 </html>
