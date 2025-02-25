@@ -21,6 +21,11 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <li class="nav-item">
+            <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#dinoGameModal" title="Play Dinosaur Game" style="padding: 5px;">
+                <img src="images/dino-icon.png" alt="Dinosaur Icon" style="width: 30px; height: 30px;">
+            </button>
+        </li>      
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <!-- Dropdown Menu -->
@@ -41,6 +46,25 @@
         </div>
     </div>
 </nav>
+
+<!-- Dinosaur Game Modal -->
+<div class="modal fade" id="dinoGameModal" tabindex="-1" aria-labelledby="dinoGameModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="dinoGameModalLabel">Dinosaur Game</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="height: 80vh;">
+                <iframe 
+                    src="https://chromedino.com" 
+                    style="width: 100%; height: 100%; border: none;" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Bootstrap Modal for Resume -->
 <div class="modal fade" id="resumeModal" tabindex="-1" aria-labelledby="resumeModalLabel" aria-hidden="true">
@@ -67,7 +91,7 @@
     <div class="container">
         <h1 class="display-4 animate__animated animate__fadeInDown">Welcome to My Portfolio</h1>
         <p class="lead animate__animated animate__fadeInUp">Showcasing My Projects and Coding Journey</p>
-        <a href="#projects" class="btn btn-primary btn-lg animate__animated animate__zoomIn">Explore Projects</a>
+        <a href="#projects" class="btn btn-outline-light btn-lg animate__animated animate__zoomIn">Explore Projects</a>
         <button class="btn btn-outline-light btn-lg animate__animated animate__zoomIn" data-bs-toggle="modal" data-bs-target="#aboutMeModal">About Me</button>
     </div>
 </header>
@@ -105,13 +129,175 @@
     </div>
 </div>
 
+<!-- Music Player Toggle Button (GitHub-themed) -->
+<!-- Toggle Button for Music Player (GitHub-themed) -->
+<button class="music-toggle-btn" id="musicToggleBtn">
+    🎧 
+</button>
+
+<!-- Music Player with Song Selection -->
+<div class="music-bar" id="musicPlayer">
+    <audio id="audioPlayer" src="" preload="metadata"></audio>
+
+    <!-- Play/Pause Button -->
+    <button onclick="togglePlayPause()" id="playPauseBtn" class="play-pause-btn">
+        🔇
+    </button>
+
+    <!-- Song Selection Dropdown -->
+    <select id="songSelect" class="song-select" onchange="changeSong()">
+        <option value="" disabled selected>Select a song</option>
+        <option value="assets/music/massolofi.mp3">Song 1 - Chill Vibes</option>
+        <option value="assets/music/massolofi-2.mp3">Song 2 - Lofi Beats</option>
+        <option value="assets/music/massolofi-3.mp3">Song 3 - Coding Groove</option>
+    </select>
+
+    <!-- Progress Bar -->
+    <input type="range" id="progressBar" value="0" max="100" class="progress-bar">
+</div>
+
+<!-- Styles for the Transparent Music Player -->
+<style>
+ /* Music Bar with GitHub Dark Theme */
+.music-bar {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    padding: 10px;
+    background-color: #0d1117; /* GitHub dark mode */
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.3s;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Toggle Button (Music Note) */
+.music-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #161b22;
+    color: #c9d1d9;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 1.5rem;
+    z-index: 1100;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.music-toggle-btn:hover {
+    background-color: #238636; /* GitHub green */
+    color: white;
+}
+
+/* Show Music Player on Hover */
+.music-toggle-btn:hover + .music-bar,
+.music-bar:hover {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Play/Pause Button */
+.play-pause-btn {
+    background-color: transparent;
+    color: #c9d1d9;
+    border: none;
+    font-size: 1.2rem;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.play-pause-btn:hover {
+    color: #58a6ff; /* GitHub blue */
+}
+
+/* Song Selection Dropdown */
+.song-select {
+    background-color: #161b22;
+    color: #c9d1d9;
+    border: 1px solid #30363d;
+    border-radius: 5px;
+    padding: 5px;
+    margin-right: 10px;
+    flex: 1;
+}
+
+/* Progress Bar */
+.progress-bar {
+    flex: 1;
+    margin: 0 10px;
+    height: 5px;
+    background-color: #30363d;
+    border-radius: 5px;
+    accent-color: #238636; /* Green progress */
+}
+
+</style>
+
+<script>
+// Get elements
+const audioPlayer = document.getElementById('audioPlayer');
+const playPauseBtn = document.getElementById('playPauseBtn');
+const progressBar = document.getElementById('progressBar');
+const songSelect = document.getElementById('songSelect');
+
+// Toggle Play/Pause
+function togglePlayPause() {
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+        playPauseBtn.textContent = '🎵';
+    } else {
+        audioPlayer.pause();
+        playPauseBtn.textContent = '🔇';
+    }
+}
+
+// Change Song Based on Selection
+function changeSong() {
+    const selectedSong = songSelect.value;
+    if (selectedSong) {
+        audioPlayer.src = selectedSong;
+        audioPlayer.play();
+        playPauseBtn.textContent = '🎵';
+    }
+}
+
+// Update Progress Bar
+audioPlayer.ontimeupdate = () => {
+    const percentage = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+    progressBar.value = percentage;
+};
+
+// Seek Functionality
+progressBar.addEventListener('input', () => {
+    const seekTime = (progressBar.value / 100) * audioPlayer.duration;
+    audioPlayer.currentTime = seekTime;
+});
+
+// Reset Button Icon on Audio End
+audioPlayer.onended = () => {
+    playPauseBtn.textContent = '🔇';
+};
+
+</script>
+
 <!-- Projects Section -->
 <section id="projects" class="py-5">
     <div class="container">
         <h2 class="text-center mb-4"></h2>
         <div class="row g-4">
 
-			
             <!-- Project Cards -->
             <div class="col-md-4" data-sr="enter left">
                 <div class="card h-100 shadow">
