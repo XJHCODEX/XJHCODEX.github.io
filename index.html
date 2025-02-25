@@ -30,8 +30,8 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="optionsDropdown">
                         <li><a class="dropdown-item" href="#">Projects</a></li>
-                        <li><a class="dropdown-item" href="https://github.com/XJHCODEX" target="_blank">GitHub</a></li>
-                        <li><a class="dropdown-item" href="https://www.linkedin.com/in/jeremy-hernandez-1637ab229/" target="_blank">LinkedIn</a></li>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#githubModal">GitHub</a></li>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#linkedinModal">LinkedIn</a></li>
                         <li class="nav-item">
                             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#resumeModal">Resume</a>
                         </li>
@@ -41,6 +41,44 @@
         </div>
     </div>
 </nav>
+
+<!-- GitHub Modal -->
+<div class="modal fade" id="githubModal" tabindex="-1" aria-labelledby="githubModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="githubModalLabel">My GitHub</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="height: 80vh;">
+                <iframe 
+                    src="https://github.com/XJHCODEX" 
+                    style="width: 100%; height: 100%; border: none;" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- LinkedIn Modal -->
+<div class="modal fade" id="linkedinModal" tabindex="-1" aria-labelledby="linkedinModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="linkedinModalLabel">My LinkedIn</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="height: 80vh;">
+                <iframe 
+                    src="https://www.linkedin.com/in/jeremy-hernandez-1637ab229/" 
+                    style="width: 100%; height: 100%; border: none;" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Bootstrap Modal for Resume -->
 <div class="modal fade" id="resumeModal" tabindex="-1" aria-labelledby="resumeModalLabel" aria-hidden="true">
@@ -168,6 +206,46 @@
 </footer>
 
 <!-- Scripts -->
+<!-- GitHub Pop up-->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const githubModal = new bootstrap.Modal(document.getElementById('githubModal'));
+
+        // Event listener for the close button
+        document.querySelector('.btn-close').addEventListener('click', function() {
+            githubModal.hide();
+        });
+
+        // Ensure the modal closes when clicking outside of it
+        document.getElementById('githubModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                githubModal.hide();
+            }
+        });
+    });
+</script>
+
+<!-- LinkedIn Pop up-->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const linkedinModal = new bootstrap.Modal(document.getElementById('linkedinModal'));
+
+        // Event listener for the close button
+        document.querySelector('.btn-close').addEventListener('click', function() {
+            linkedinModal.hide();
+        });
+
+        // Ensure the modal closes when clicking outside of it
+        document.getElementById('linkedinModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                linkedinModal.hide();
+            }
+        });
+    });
+</script>
+<!-- Other Scripts-->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     // Initialize ScrollReveal animations
