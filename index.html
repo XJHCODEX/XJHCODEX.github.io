@@ -106,8 +106,42 @@
         <h1 class="display-4 animate__animated animate__fadeInDown">Welcome to My Portfolio</h1>
         <p class="lead animate__animated animate__fadeInUp">Showcasing My Projects and Coding Journey</p>
         <a href="#projects" class="btn btn-primary btn-lg animate__animated animate__zoomIn">Explore Projects</a>
+        <button class="btn btn-outline-light btn-lg animate__animated animate__zoomIn" data-bs-toggle="modal" data-bs-target="#aboutMeModal">About Me</button>
     </div>
 </header>
+
+<!-- Modal for About Me Section -->
+<div class="modal fade" id="aboutMeModal" tabindex="-1" aria-labelledby="aboutMeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="aboutMeModalLabel">About Me</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex">
+                <!-- Profile Image -->
+                <div class="me-4">
+                    <img src="images/Portpic.png" alt="Jeremy Hernandez" class="img-fluid rounded" style="width: 200px;">
+                </div>
+                
+                <!-- Bio Description -->
+                <div>
+                    <h3>Jeremy Hernandez</h3>
+                    <p>
+                        Passionate and driven technology enthusiast with a strong foundation in cloud computing, software development, and
+                        automation. Experienced in designing and implementing scalable solutions across diverse environments using modern cloud
+                        technologies, DevOps practices, and data-driven approaches. Adaptable and eager to contribute to innovative projects that drive
+                        efficiency, security, and growth.
+                    </p>
+                    <p>
+                        In my spare time, I love exploring new technologies, contributing to open-source projects, and playing video games. 
+                        Let's connect and create something amazing together!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Projects Section -->
 <section id="projects" class="py-5">
@@ -150,7 +184,18 @@
                 </div>
             </div>
 
-						<!-- Other Projects -->
+			<!-- Other Projects -->
+            
+           <div class="col-md-4">
+                <div class="card h-100 shadow">
+                    <img src="images/youtube_api.png" class="card-img-top" alt="Youtube_api">
+                    <div class="card-body">
+                        <h5 class="card-title">Youtube Api</h5>
+                        <p class="card-text">Youtube channel stats using youtube_api</p>
+                        <a href="https://github.com/XJHCODEX/youtube_api" target="_blank" class="btn btn-outline-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
 
             <div class="col-md-4">
                 <div class="card h-100 shadow">
@@ -206,6 +251,15 @@
 </footer>
 
 <!-- Scripts -->
+
+<script>
+// Automatically focus on the About Me modal when it opens
+const aboutMeModal = document.getElementById('aboutMeModal');
+aboutMeModal.addEventListener('shown.bs.modal', () => {
+    console.log('About Me modal opened.');
+});
+</script>
+
 <!-- GitHub Pop up-->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
