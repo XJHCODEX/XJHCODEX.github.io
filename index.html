@@ -18,6 +18,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container">
         <a class="navbar-brand" href="#">Jeremy Hernandez</a>
+        <!-- Blog Button Next to Brand -->
+        <a href="blog.html" class="btn btn-outline-light ms-3">Blog</a>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>  
@@ -152,96 +155,9 @@
     <input type="range" id="progressBar" value="0" max="100" class="progress-bar">
 </div>
 
-<!-- Styles for the Transparent Music Player -->
-<style>
- /* Music Bar with GitHub Dark Theme */
-.music-bar {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 300px;
-    padding: 10px;
-    background-color: #0d1117; /* GitHub dark mode */
-    border: 1px solid #30363d;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    z-index: 1000;
-    transition: all 0.3s;
-    opacity: 0;
-    visibility: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Toggle Button (Music Note) */
-.music-toggle-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #161b22;
-    color: #c9d1d9;
-    border: none;
-    border-radius: 50%;
-    padding: 10px;
-    font-size: 1.5rem;
-    z-index: 1100;
-    cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.music-toggle-btn:hover {
-    background-color: #238636; /* GitHub green */
-    color: white;
-}
-
-/* Show Music Player on Hover */
-.music-toggle-btn:hover + .music-bar,
-.music-bar:hover {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Play/Pause Button */
-.play-pause-btn {
-    background-color: transparent;
-    color: #c9d1d9;
-    border: none;
-    font-size: 1.2rem;
-    margin-right: 10px;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-.play-pause-btn:hover {
-    color: #58a6ff; /* GitHub blue */
-}
-
-/* Song Selection Dropdown */
-.song-select {
-    background-color: #161b22;
-    color: #c9d1d9;
-    border: 1px solid #30363d;
-    border-radius: 5px;
-    padding: 5px;
-    margin-right: 10px;
-    flex: 1;
-}
-
-/* Progress Bar */
-.progress-bar {
-    flex: 1;
-    margin: 0 10px;
-    height: 5px;
-    background-color: #30363d;
-    border-radius: 5px;
-    accent-color: #238636; /* Green progress */
-}
-
-</style>
-
-<script>
+<!-- Music script -->
+ <script>
+    
 // Get elements
 const audioPlayer = document.getElementById('audioPlayer');
 const playPauseBtn = document.getElementById('playPauseBtn');
@@ -286,7 +202,7 @@ audioPlayer.onended = () => {
     playPauseBtn.textContent = '🔇';
 };
 
-</script>
+ </script>
 
 <!-- Projects Section -->
 <section id="projects" class="py-5">

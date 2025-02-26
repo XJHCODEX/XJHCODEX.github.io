@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #f8f9fa;
+    background-color: #0d1117;
     overflow-x: hidden;
 }
 
@@ -26,6 +26,30 @@ body {
     50% { background-position: 60% 50%; }
     100% { background-position: 0% 50%; }
 }
+
+.blog-container {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.blog-post {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    padding: 20px;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.blog-post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post h2 {
+    color: #58a6ff;
+}
+
 
 /* Navbar */
 .navbar {
@@ -97,32 +121,6 @@ body {
     transition: background-position 0.5s ease-out;
 }
 
-.hero-section h1 {
-    font-size: 4rem;
-    margin-bottom: 20px;
-    color: #f0f6fc;
-}
-
-.hero-section p {
-    font-size: 1.5rem;
-    margin-bottom: 30px;
-    color: #8b949e;
-}
-
-.hero-section .btn-primary {
-    background-color: #238636; /* GitHub green accent */
-    border: none;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    transition: all 0.3s;
-}
-
-.hero-section .btn-primary:hover {
-    background-color: #58a6ff; /* GitHub blue accent */
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-}
-
 /* Project Cards - GitHub Dark Theme */
 .card {
     background-color: #161B22; /* GitHub dark mode color */
@@ -138,7 +136,7 @@ body {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     height: 290px;
-    width: 415px;
+    width: 100%;
     object-fit: cover;
 }
 
@@ -174,34 +172,6 @@ body {
     border-top: 1px solid #30363d;
 }
 
-/* Footer */
-footer {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #ffffff;
-    padding: 20px 0;
-}
-
-footer a {
-    color: #86a8e7;
-    transition: color 0.2s;
-}
-
-footer a:hover {
-    color: #ff7e5f;
-    text-decoration: none;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .hero-section h1 {
-        font-size: 2.5rem;
-    }
-
-    .card img {
-        height: 150px;
-    }
-}
-
 /* Modal Styling for Resume */
 .modal-content {
     background-color: #0d1117; /* GitHub dark theme */
@@ -227,88 +197,50 @@ footer a:hover {
     border: none;
 }
 
-/* Styles for the Transparent Music Player */
- /* Music Bar with GitHub Dark Theme */
-.music-bar {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 300px;
-    padding: 10px;
-    background-color: #0d1117; /* GitHub dark mode */
-    border: 1px solid #30363d;
-    border-radius: 8px;
+/* Hero Section */
+.hero-section {
+    height: 100vh;
     display: flex;
     align-items: center;
-    z-index: 1000;
-    transition: all 0.3s;
-    opacity: 0;
-    visibility: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    background: linear-gradient(to right, rgba(13, 17, 23, 0.8), rgba(22, 27, 34, 0.8)), url('images/hero-bg-dark.jpg') center/cover no-repeat;
+    color: #c9d1d9;
+    position: relative;
+    z-index: 1;
+    background-attachment: fixed;
+    transition: background-position 0.5s ease-out;
 }
 
-/* Toggle Button (Music Note) */
-.music-toggle-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #161b22;
-    color: #c9d1d9;
-    border: none;
-    border-radius: 50%;
-    padding: 10px;
+.hero-section h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: #f0f6fc;
+}
+
+.hero-section p {
     font-size: 1.5rem;
-    z-index: 1100;
-    cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+    color: #8b949e;
 }
 
-.music-toggle-btn:hover {
-    background-color: #238636; /* GitHub green */
-    color: white;
-}
-
-/* Show Music Player on Hover */
-.music-toggle-btn:hover + .music-bar,
-.music-bar:hover {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Play/Pause Button */
-.play-pause-btn {
-    background-color: transparent;
-    color: #c9d1d9;
+.hero-section .btn-primary {
+    background-color: #238636; /* GitHub green accent */
     border: none;
+    padding: 10px 20px;
     font-size: 1.2rem;
-    margin-right: 10px;
-    cursor: pointer;
-    transition: color 0.3s;
+    transition: all 0.3s;
 }
 
-.play-pause-btn:hover {
-    color: #58a6ff; /* GitHub blue */
+.hero-section .btn-primary:hover {
+    background-color: #58a6ff; /* GitHub blue accent */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Song Selection Dropdown */
-.song-select {
-    background-color: #161b22;
-    color: #c9d1d9;
-    border: 1px solid #30363d;
+#postContent {
+    color: white;
+    background-color: #1e1e1e;
+    padding: 15px;
     border-radius: 5px;
-    padding: 5px;
-    margin-right: 10px;
-    flex: 1;
-}
-
-/* Progress Bar */
-.progress-bar {
-    flex: 1;
-    margin: 0 10px;
-    height: 5px;
-    background-color: #30363d;
-    border-radius: 5px;
-    accent-color: #238636; /* Green progress */
+    overflow-y: auto;
 }
