@@ -359,5 +359,15 @@ aboutMeModal.addEventListener('shown.bs.modal', () => {
     });
 </script>
 
+<script>
+    // Force the page to load at the top instantly
+    if (window.history.scrollRestoration) {
+        window.history.scrollRestoration = 'manual';
+    }
+    window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+    };
+</script>
+
 </body>
 </html>
