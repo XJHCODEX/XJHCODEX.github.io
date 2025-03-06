@@ -1,9 +1,9 @@
-# Exploring Oracle Cloud Services
+## Exploring Oracle Cloud Services
 
 Discover the features and capabilities of Oracle Cloud, including cloud storage, computing power, and advanced analytics.
 
-## Download Oracle Autonomous Database wallet
-## Download Oracle Istant Client for the following operating system
+- Download Oracle Autonomous Database wallet
+- Download Oracle Istant Client for the following operating system
 
 ## Configuring Oracle Instant Client
 ```bash
@@ -18,7 +18,7 @@ export TNS_ADMIN="/home/ubuntu/<wallet_name>"
 source ~/.bashrc
 ```
 
-## Open ports on vcn
+- Open ports on vcn
 
 ## Setup IP Forwarding (Optional)
 ```bash
