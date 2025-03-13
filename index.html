@@ -215,7 +215,7 @@ audioPlayer.onended = () => {
             <!-- Project Cards -->
             <div class="col-md-4" data-sr="enter left">
                 <div class="card h-100 shadow">
-                    <img src="images/zenvault.png" class="card-img-top" alt="ZenVault">
+                    <img src="images/zenv.png" class="card-img-top" alt="ZenVault">
                     <div class="card-body">
                         <h5 class="card-title">ZenVault</h5>
                         <p class="card-text">A secure and scalable cloud-based file storage system deployed on Oracle Cloud Free Tier, leveraging Autonomous Transaction
@@ -378,6 +378,26 @@ aboutMeModal.addEventListener('shown.bs.modal', () => {
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
     };
+</script>
+
+<script>
+// Add 'modal-open' class when any modal is shown
+document.querySelectorAll('.modal').forEach(modal => {
+        modal.addEventListener('show.bs.modal', () => {
+            document.body.classList.add('modal-open');
+        });
+        modal.addEventListener('hidden.bs.modal', () => {
+            document.body.classList.remove('modal-open');
+        });
+    });
+
+    // Toggle music bar on click
+    const toggleBtn = document.querySelector('.music-toggle-btn');
+    const musicBar = document.querySelector('.music-bar');
+    toggleBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent hover interference
+        musicBar.classList.toggle('active');
+    }); 
 </script>
 
 </body>

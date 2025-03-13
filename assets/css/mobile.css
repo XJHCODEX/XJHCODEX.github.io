@@ -1,64 +1,131 @@
-/* Ensure Cards Display Properly on Mobile */
+/* General Styles for Cards */
 .card {
     background-color: #161B22; /* GitHub dark mode color */
     color: #c9d1d9; /* Light gray text for readability */
     border: none;
     border-radius: 10px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Fluid width */
+    max-width: 415px; /* Cap for larger screens */
+    margin: 0 auto; /* Center on mobile */
 }
 
+/* Image Styling */
 .card img {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    height: 290px;
-    width: 415px;
+    width: 100%; /* Full width of card */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 290px; /* Cap height */
     object-fit: cover;
 }
 
-/* Ensure the image is centered and contained */
+/* Image Container */
 .card-img-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px; /* Set a specific height */
-    overflow: hidden; /* Prevent overflow */
-    background-color: #161b22; /* Optional: Background color */
+    width: 100%;
+    height: 200px; /* Consistent with content */
+    overflow: hidden;
+    background-color: #161b22;
 }
 
-/* Centering the image */
+/* Centering the Image */
 .card-img-top {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain; /* Keeps the image aspect ratio */
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Keeps aspect ratio */
 }
 
-/* Make Sure Content Isn't Clipped */
+/* Content Scroll */
 #postContent {
     max-height: 500px;
     overflow-y: auto;
+    padding: 10px; /* Better spacing */
 }
 
-/* Ensure ScrollReveal Works on Mobile */
+/* ScrollReveal on Mobile - Subtle Animation */
 [data-sr] {
-    opacity: 1 !important;
-    transform: none !important;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* Make Navbar More Mobile-Friendly */
+[data-sr].sr--in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Navbar */
 .navbar {
-    padding: 10px;
+    padding: 15px; /* More breathing room */
+    background-color: #0d1117; /* Ensure consistency */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Modal Fullscreen on Mobile */
+/* Mobile-Specific Adjustments */
 @media (max-width: 768px) {
+    /* Cards */
+    .card {
+        max-width: 100%; /* Full width on mobile */
+        margin: 10px 0; /* Vertical spacing */
+    }
+
+    .card img {
+        max-height: 200px; /* Match container */
+    }
+
+    .card-img-container {
+        height: 150px; /* Smaller for mobile */
+    }
+
+    /* Navbar */
+    .navbar {
+        padding: 10px 15px;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 12px 15px; /* Larger tap targets */
+    }
+
+    /* Modal Fullscreen */
     .modal-dialog {
         max-width: 100%;
         margin: 0;
     }
+
     .modal-content {
         height: 100vh;
         border-radius: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Further Adjustments for Small Phones */
+    .card-img-container {
+        height: 120px; /* Even smaller */
+    }
+
+    .card {
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+    }
+
+    .navbar-brand {
+        font-size: 1.1rem; /* Smaller logo text */
+    }
+
+    .navbar-nav .nav-link {
+        padding: 10px 12px; /* Slightly smaller */
+    }
+}
+
+/* Hover Effects for Desktop, Touch Adjustments for Mobile */
+@media (hover: hover) {
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
 }

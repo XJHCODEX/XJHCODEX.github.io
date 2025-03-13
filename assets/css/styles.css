@@ -15,7 +15,7 @@ body {
     left: 0;
     width: 700%;
     height: 700%;
-    background: linear-gradient(120deg, #0d1117, #211d1d, #21262d, #30363d);
+    background: linear-gradient(120deg, #0d1117, #1f252c, #2d333b, #3b444d);
     background-size: 250% 250%;
     animation: gradientAnimation 15s ease infinite;
     z-index: -1;
@@ -229,47 +229,54 @@ footer a:hover {
 
 /* Styles for the Transparent Music Player */
  /* Music Bar with GitHub Dark Theme */
+/* Music Bar - Glassmorphism Style */
+/* Music Bar - Glassmorphism Style */
 .music-bar {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 300px;
-    padding: 10px;
-    background-color: #0d1117; /* GitHub dark mode */
-    border: 1px solid #30363d;
-    border-radius: 8px;
+    bottom: 30px;
+    right: 30px;
+    width: 320px;
+    padding: 12px;
+    background: linear-gradient(135deg, rgba(13, 17, 23, 0.8), rgba(28, 37, 38, 0.6));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(64, 72, 84, 0.3);
+    border-radius: 12px;
     display: flex;
     align-items: center;
     z-index: 1000;
-    transition: all 0.3s;
     opacity: 0;
     visibility: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
-/* Toggle Button (Music Note) */
+/* Toggle Button (Music Note) - Neumorphic Touch */
 .music-toggle-btn {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #161b22;
-    color: #c9d1d9;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(145deg, #1c2526, #0d1117);
+    color: #d3dce6;
     border: none;
     border-radius: 50%;
-    padding: 10px;
-    font-size: 1.5rem;
+    padding: 12px;
+    font-size: 1.6rem;
     z-index: 1100;
     cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(64, 72, 84, 0.1);
 }
 
 .music-toggle-btn:hover {
-    background-color: #238636; /* GitHub green */
-    color: white;
+    background: linear-gradient(145deg, #2ea043, #238636);
+    color: #fff;
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* Show Music Player on Hover */
+/* Show Music Player - Click or Hover */
+.music-bar.active,
 .music-toggle-btn:hover + .music-bar,
 .music-bar:hover {
     visibility: visible;
@@ -277,38 +284,70 @@ footer a:hover {
     transform: translateY(0);
 }
 
+/* Hide Music Bar and Toggle Button When Modal is Open */
+.modal-open .music-bar,
+.modal-open .music-toggle-btn {
+    visibility: hidden !important;
+    opacity: 0 !important;
+    transform: translateY(20px) !important; /* Ensure it slides out */
+}
+
 /* Play/Pause Button */
 .play-pause-btn {
     background-color: transparent;
-    color: #c9d1d9;
+    color: #d3dce6;
     border: none;
-    font-size: 1.2rem;
-    margin-right: 10px;
+    font-size: 1.4rem;
+    margin-right: 12px;
     cursor: pointer;
-    transition: color 0.3s;
+    transition: all 0.3s ease;
 }
 
 .play-pause-btn:hover {
-    color: #58a6ff; /* GitHub blue */
+    color: #6ab7ff;
+    transform: scale(1.15);
+    text-shadow: 0 0 8px rgba(106, 183, 255, 0.5);
 }
 
 /* Song Selection Dropdown */
 .song-select {
-    background-color: #161b22;
-    color: #c9d1d9;
-    border: 1px solid #30363d;
-    border-radius: 5px;
-    padding: 5px;
-    margin-right: 10px;
+    background: linear-gradient(135deg, #1c2526, #161b22);
+    color: #d3dce6;
+    border: 1px solid rgba(64, 72, 84, 0.5);
+    border-radius: 6px;
+    padding: 6px 8px;
+    margin-right: 12px;
     flex: 1;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23d3dce6" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M1 5l7 7 7-7H1z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    padding-right: 24px;
+}
+
+.song-select:hover,
+.song-select:focus {
+    border-color: #6ab7ff;
+    box-shadow: 0 0 10px rgba(106, 183, 255, 0.3);
+    outline: none;
 }
 
 /* Progress Bar */
 .progress-bar {
     flex: 1;
-    margin: 0 10px;
-    height: 5px;
-    background-color: #30363d;
-    border-radius: 5px;
-    accent-color: #238636; /* Green progress */
+    margin: 0 12px;
+    height: 6px;
+    background-color: rgba(64, 72, 84, 0.7);
+    border-radius: 6px;
+    accent-color: #2ea043;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.progress-bar:hover {
+    height: 8px;
+    background-color: rgba(64, 72, 84, 1);
+    box-shadow: 0 0 8px rgba(46, 160, 67, 0.5);
 }
