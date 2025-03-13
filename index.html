@@ -20,9 +20,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container">
         <a class="navbar-brand" href="#">Jeremy Hernandez</a>
-        <!-- Blog Button Next to Brand -->
-        <a href="blog.html" class="btn btn-outline-light ms-3">Blog</a>
-
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>  
@@ -89,12 +86,38 @@
 
 <!-- Hero Section with Animated Gradient -->
 <header class="text-white text-center py-5 hero-section">
-    <div class="container">
+    <div class="hero-buttons">
         <h1 class="display-4 animate__animated animate__fadeInDown">Welcome to My Portfolio</h1>
         <p class="lead animate__animated animate__fadeInUp">Showcasing My Projects and Coding Journey</p>
         <a href="#projects" class="btn btn-outline-light btn-lg animate__animated animate__zoomIn">Explore Projects</a>
         <button class="btn btn-outline-light btn-lg animate__animated animate__zoomIn" data-bs-toggle="modal" data-bs-target="#aboutMeModal">About Me</button>
+        <a href="blog.html" class="btn btn-outline-light btn-lg animate__animated animate__zoomIn">Blog</a>
+
+
+        <!-- Music Player Toggle Button (GitHub-themed) -->
+         <!--
+        <button class="music-toggle-btn animate__animated animate__zoomIn" id="musicToggleBtn">
+            🎧 
+        </button>
+        -->
+
+        <!-- Music Player with Song Selection -->
+         <!--
+        <div class="music-bar" id="musicPlayer">
+            <audio id="audioPlayer" src="" preload="metadata"></audio>
+            <button onclick="togglePlayPause()" id="playPauseBtn" class="play-pause-btn">
+                🔇
+            </button>
+            <select id="songSelect" class="song-select" onchange="changeSong()">
+                <option value="" disabled selected>Select a song</option>
+                <option value="assets/music/massolofi.mp3">Song 1 - Chill Vibes</option>
+                <option value="assets/music/massolofi-2.mp3">Song 2 - Lofi Beats</option>
+                <option value="assets/music/massolofi-3.mp3">Song 3 - Coding Groove</option>
+            </select>
+            <input type="range" id="progressBar" value="0" max="100" class="progress-bar">
+        </div>
     </div>
+        -->
 </header>
 
 <!-- Modal for About Me Section -->
@@ -128,33 +151,6 @@
             </div>
         </div>
     </div>
-</div>
-
-<!-- Music Player Toggle Button (GitHub-themed) -->
-<!-- Toggle Button for Music Player (GitHub-themed) -->
-<button class="music-toggle-btn" id="musicToggleBtn">
-    🎧 
-</button>
-
-<!-- Music Player with Song Selection -->
-<div class="music-bar" id="musicPlayer">
-    <audio id="audioPlayer" src="" preload="metadata"></audio>
-
-    <!-- Play/Pause Button -->
-    <button onclick="togglePlayPause()" id="playPauseBtn" class="play-pause-btn">
-        🔇
-    </button>
-
-    <!-- Song Selection Dropdown -->
-    <select id="songSelect" class="song-select" onchange="changeSong()">
-        <option value="" disabled selected>Select a song</option>
-        <option value="assets/music/massolofi.mp3">Song 1 - Chill Vibes</option>
-        <option value="assets/music/massolofi-2.mp3">Song 2 - Lofi Beats</option>
-        <option value="assets/music/massolofi-3.mp3">Song 3 - Coding Groove</option>
-    </select>
-
-    <!-- Progress Bar -->
-    <input type="range" id="progressBar" value="0" max="100" class="progress-bar">
 </div>
 
 <!-- Music script -->
@@ -205,6 +201,30 @@ audioPlayer.onended = () => {
 };
 
  </script>
+
+<!-- Skillset Section -->
+<section id="skillset" class="py-5 text-white">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8" data-sr="enter bottom">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h5 class="card-title text-center mb-4">Technical Skills</h5>
+                        <div class="skills-list">
+                            <p><strong>Cloud Technologies:</strong> Oracle Cloud Infrastructure (OCI), AWS (EC2, DynamoDB, S3, CodePipeline), Terraform, Ansible, Docker</p>
+                            <p><strong>Programming & Automation:</strong> Python, SQL, Bash, Git, GitLab CI/CD</p>
+                            <p><strong>Data & AI:</strong> Pandas, NumPy, TensorFlow, Scikit-learn, Jupyter Notebook</p>
+                            <p><strong>Version Control:</strong> Git, GitLab, Bitbucket</p>
+                            <p><strong>DevOps & Monitoring:</strong> Jenkins, Jira, CloudWatch</p>
+                            <p><strong>Testing:</strong> Postman</p>
+                            <p><strong>Web Technologies:</strong> Flask, Django, JavaScript, HTML, CSS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Projects Section -->
 <section id="projects" class="py-5">

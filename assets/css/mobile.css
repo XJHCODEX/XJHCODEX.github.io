@@ -1,131 +1,191 @@
-/* General Styles for Cards */
+/* Ensure Cards Display Properly on Mobile */
 .card {
     background-color: #161B22; /* GitHub dark mode color */
     color: #c9d1d9; /* Light gray text for readability */
     border: none;
     border-radius: 10px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s, box-shadow 0.2s;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Fluid width */
-    max-width: 415px; /* Cap for larger screens */
-    margin: 0 auto; /* Center on mobile */
 }
 
-/* Image Styling */
 .card img {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    width: 100%; /* Full width of card */
-    height: auto; /* Maintain aspect ratio */
-    max-height: 290px; /* Cap height */
+    height: 290px;
+    width: 415px;
     object-fit: cover;
 }
 
-/* Image Container */
+/* Ensure the image is centered and contained */
 .card-img-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 200px; /* Consistent with content */
-    overflow: hidden;
-    background-color: #161b22;
+    height: 200px; /* Set a specific height */
+    overflow: hidden; /* Prevent overflow */
+    background-color: #161b22; /* Optional: Background color */
 }
 
-/* Centering the Image */
+/* Centering the image */
 .card-img-top {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Keeps aspect ratio */
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Keeps the image aspect ratio */
 }
 
-/* Content Scroll */
+/* Make Sure Content Isn't Clipped */
 #postContent {
     max-height: 500px;
     overflow-y: auto;
-    padding: 10px; /* Better spacing */
 }
 
-/* ScrollReveal on Mobile - Subtle Animation */
+/* Ensure ScrollReveal Works on Mobile */
 [data-sr] {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 1 !important;
+    transform: none !important;
 }
 
-[data-sr].sr--in {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Navbar */
+/* Navbar - Base Styles */
 .navbar {
-    padding: 15px; /* More breathing room */
-    background-color: #0d1117; /* Ensure consistency */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px 20px; /* Default padding for desktop */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background-color: #1a2230 !important;
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #3b4a5a;
+    border-radius: 0 0 12px 12px;
 }
 
-/* Mobile-Specific Adjustments */
+/* Navbar Brand */
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #e0e6ed;
+    transition: color 0.3s ease, transform 0.3s ease;
+    padding: 8px 12px;
+}
+
+.navbar-brand:hover {
+    color: #6bbbf7;
+    transform: scale(1.05);
+}
+
+/* Navbar Links */
+.navbar-dark .navbar-nav .nav-link {
+    color: #e0e6ed;
+    font-size: 1.2rem;
+    padding: 10px 15px;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #6bbbf7;
+    background-color: rgba(107, 187, 247, 0.1);
+    border-radius: 6px;
+    transform: translateY(-2px);
+}
+
+/* Toggler Button */
+.navbar-toggler {
+    border: none; /* Remove default border */
+    padding: 8px; /* Slightly smaller for mobile */
+}
+
+/* Mobile Adjustments for Navbar */
 @media (max-width: 768px) {
-    /* Cards */
-    .card {
-        max-width: 100%; /* Full width on mobile */
-        margin: 10px 0; /* Vertical spacing */
-    }
-
-    .card img {
-        max-height: 200px; /* Match container */
-    }
-
-    .card-img-container {
-        height: 150px; /* Smaller for mobile */
-    }
-
-    /* Navbar */
     .navbar {
-        padding: 10px 15px;
+        padding: 10px 15px; /* Reduced padding for mobile */
     }
 
-    .navbar-nav .nav-link {
+    .navbar-brand {
+        font-size: 1.3rem; /* Slightly smaller for mobile */
+        padding: 6px 10px; /* Adjust tap area */
+    }
+
+    .navbar-toggler {
+        font-size: 1rem; /* Smaller toggler icon */
+    }
+
+    .navbar-collapse {
+        background-color: #1a2230; /* Match navbar background */
+        border-radius: 0 0 12px 12px; /* Keep rounded corners */
+        padding: 10px; /* Add padding inside collapsed menu */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Consistent shadow */
+    }
+
+    .navbar-nav {
+        text-align: center; /* Center links for better mobile look */
+    }
+
+    .navbar-dark .navbar-nav .nav-link {
+        font-size: 1.1rem; /* Slightly smaller text */
         padding: 12px 15px; /* Larger tap targets */
+        border-bottom: 1px solid rgba(59, 74, 90, 0.3); /* Subtle separator */
     }
 
-    /* Modal Fullscreen */
+    .navbar-dark .navbar-nav .nav-link:last-child {
+        border-bottom: none; /* Remove border from last item */
+    }
+
+    .navbar-dark .navbar-nav .nav-link:hover,
+    .navbar-dark .navbar-nav .nav-link.active {
+        background-color: rgba(107, 187, 247, 0.2); /* Slightly more visible hover */
+        transform: none; /* Disable transform for simplicity on mobile */
+    }
+
+    /* Dropdown Menu Adjustments */
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        background-color: #232c3b;
+        border: 1px solid #3b4a5a;
+        border-radius: 10px;
+        padding: 12px 0;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        min-width: 200px;
+        z-index: 1000;
+    }
+    .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .dropdown-item {
+        font-size: 1rem; /* Readable size */
+        padding: 10px 15px; /* Larger tap area */
+        color: #e0e6ed;
+    }
+
+    .dropdown-item:hover {
+        background-color: #34c759;
+        color: #ffffff;
+        transform: none; /* Disable slide effect on mobile */
+    }
+}
+
+/* Ensure Cards Display Properly on Mobile (Unchanged) */
+@media (max-width: 768px) {
+    .card img {
+        height: 150px; /* From your existing responsive design */
+        width: 100%; /* Full width on mobile */
+    }
+}
+
+/* Modal Fullscreen on Mobile (Unchanged) */
+@media (max-width: 768px) {
     .modal-dialog {
         max-width: 100%;
         margin: 0;
     }
-
     .modal-content {
         height: 100vh;
         border-radius: 0;
-    }
-}
-
-@media (max-width: 576px) {
-    /* Further Adjustments for Small Phones */
-    .card-img-container {
-        height: 120px; /* Even smaller */
-    }
-
-    .card {
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Lighter shadow */
-    }
-
-    .navbar-brand {
-        font-size: 1.1rem; /* Smaller logo text */
-    }
-
-    .navbar-nav .nav-link {
-        padding: 10px 12px; /* Slightly smaller */
-    }
-}
-
-/* Hover Effects for Desktop, Touch Adjustments for Mobile */
-@media (hover: hover) {
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
 }

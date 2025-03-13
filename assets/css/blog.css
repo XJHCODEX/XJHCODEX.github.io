@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #1b1b1b;
+    background-color: #171d26 !important; /* Warmer dark gray instead of #0d1117 */
     overflow-x: hidden;
 }
 
@@ -52,29 +52,44 @@ body {
 
 
 /* Navbar */
+/* Navbar */
 .navbar {
-    padding: 10px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #0d1117 !important; /* GitHub dark theme */
-    backdrop-filter: blur(5px);
-    border-bottom: 1px solid #30363d;
+    padding: 15px 20px; /* More padding for a relaxed feel */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Softer, deeper shadow */
+    background-color: #1a2230 !important; /* Warmer dark gray instead of #0d1117 */
+    backdrop-filter: blur(8px); /* Enhanced blur for a cozy effect */
+    border-bottom: 1px solid #3b4a5a; /* Softer border color */
+    border-radius: 0 0 12px 12px; /* Rounded bottom corners */
 }
 
+/* Navbar Brand */
 .navbar-brand {
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: #c9d1d9;
-    transition: color 0.3s;
+    font-weight: 600; /* Slightly less bold for friendliness */
+    font-size: 1.5rem; /* Larger for readability */
+    color: #e0e6ed; /* Softer light gray */
+    transition: color 0.3s ease, transform 0.3s ease; /* Added transform transition */
+    padding: 8px 12px; /* Larger tap area */
 }
 
 .navbar-brand:hover {
-    color: #58a6ff;
+    color: #6bbbf7; /* Friendlier blue (softer than #58a6ff) */
+    transform: scale(1.05); /* Subtle pop on hover */
+}
+
+/* Navbar Links */
+.navbar-dark .navbar-nav .nav-link {
+    color: #e0e6ed; /* Softer light gray */
+    font-size: 1.2rem; /* Larger text */
+    padding: 10px 15px; /* Bigger tap targets */
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
 }
 
 .navbar-dark .navbar-nav .nav-link.active,
 .navbar-dark .navbar-nav .nav-link:hover {
-    color: #58a6ff;
-    transition: color 0.3s;
+    color: #6bbbf7; /* Friendlier blue */
+    background-color: rgba(107, 187, 247, 0.1); /* Subtle background glow */
+    border-radius: 6px; /* Rounded edges */
+    transform: translateY(-2px); /* Slight lift */
 }
 
 /* Dropdown Menu Styling */
@@ -91,34 +106,46 @@ body {
     visibility: hidden;
     transform: translateY(10px);
     transition: all 0.3s ease;
-    background-color: #161b22;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 0;
+    background-color: #232c3b; /* Warmer dark shade */
+    border: 1px solid #3b4a5a; /* Subtle border */
+    border-radius: 10px; /* Softer corners */
+    padding: 12px 0; /* More padding */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow for depth */
 }
 
 .dropdown-item {
-    color: #c9d1d9;
-    transition: background 0.2s, color 0.2s;
+    color: #e0e6ed; /* Softer light gray */
+    font-size: 1.1rem; /* Slightly larger */
+    padding: 8px 20px; /* More spacious */
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 .dropdown-item:hover {
-    background-color: #238636;
-    color: white;
+    background-color: #34c759; /* Brighter, friendlier green */
+    color: #ffffff;
+    transform: translateX(5px); /* Gentle slide effect */
+    border-radius: 6px; /* Rounded edges */
 }
 
-/* Hero Section */
-.hero-section {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(to right, rgba(13, 17, 23, 0.8), rgba(22, 27, 34, 0.8)), url('images/hero-bg-dark.jpg') center/cover no-repeat;
-    color: #c9d1d9;
-    position: relative;
-    z-index: 1;
-    background-attachment: fixed;
-    transition: background-position 0.5s ease-out;
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 12px 15px; /* Slightly less padding on mobile */
+    }
+
+    .navbar-brand {
+        font-size: 1.3rem; /* Slightly smaller but still readable */
+    }
+
+    .navbar-dark .navbar-nav .nav-link {
+        font-size: 1.1rem;
+        padding: 12px 15px; /* Larger tap targets for mobile */
+    }
+
+    .dropdown-menu {
+        width: 100%; /* Full width on mobile */
+        border-radius: 8px;
+    }
 }
 
 /* Project Cards - GitHub Dark Theme */
@@ -203,7 +230,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to right, rgba(13, 17, 23, 0.8), rgba(22, 27, 34, 0.8)), url('images/hero-bg-dark.jpg') center/cover no-repeat;
+    background: linear-gradient(to right, rgb(13, 17, 23), rgb(22, 27, 34)), url('images/hero-bg-dark.jpg') center/cover no-repeat;
     color: #c9d1d9;
     position: relative;
     z-index: 1;
