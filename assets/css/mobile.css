@@ -48,12 +48,15 @@
 
 /* Navbar - Base Styles */
 .navbar {
-    padding: 15px 20px; /* Default padding for desktop */
+    padding: 15px 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     background-color: #1a2230 !important;
     backdrop-filter: blur(8px);
     border-bottom: 1px solid #3b4a5a;
     border-radius: 0 0 12px 12px;
+    position: sticky;
+    top: 0;
+    z-index: 1030;
 }
 
 /* Navbar Brand */
@@ -75,7 +78,7 @@
     color: #e0e6ed;
     font-size: 1.2rem;
     padding: 10px 15px;
-    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+    transition: color 0.3s ease, background-color 0.3s ease
 }
 
 .navbar-dark .navbar-nav .nav-link.active,
@@ -83,7 +86,6 @@
     color: #6bbbf7;
     background-color: rgba(107, 187, 247, 0.1);
     border-radius: 6px;
-    transform: translateY(-2px);
 }
 
 /* Toggler Button */
@@ -95,90 +97,79 @@
 /* Mobile Adjustments for Navbar */
 @media (max-width: 768px) {
     .navbar {
-        padding: 10px 15px; /* Reduced padding for mobile */
+        padding: 10px 15px;
     }
 
     .navbar-brand {
-        font-size: 1.3rem; /* Slightly smaller for mobile */
-        padding: 6px 10px; /* Adjust tap area */
+        font-size: 1.3rem;
+        padding: 6px 10px;
     }
 
     .navbar-toggler {
-        font-size: 1rem; /* Smaller toggler icon */
+        font-size: 1rem;
     }
 
     .navbar-collapse {
-        background-color: #1a2230; /* Match navbar background */
-        border-radius: 0 0 12px 12px; /* Keep rounded corners */
-        padding: 10px; /* Add padding inside collapsed menu */
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Consistent shadow */
+        background-color: #1a2230;
+        border-radius: 0 0 12px 12px;
+        padding: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
     .navbar-nav {
-        text-align: center; /* Center links for better mobile look */
+        text-align: center;
     }
 
     .navbar-dark .navbar-nav .nav-link {
-        font-size: 1.1rem; /* Slightly smaller text */
-        padding: 12px 15px; /* Larger tap targets */
-        border-bottom: 1px solid rgba(59, 74, 90, 0.3); /* Subtle separator */
+        font-size: 1.1rem;
+        padding: 12px 15px;
+        border-bottom: 1px solid rgba(59, 74, 90, 0.3);
     }
 
     .navbar-dark .navbar-nav .nav-link:last-child {
-        border-bottom: none; /* Remove border from last item */
+        border-bottom: none;
     }
 
     .navbar-dark .navbar-nav .nav-link:hover,
     .navbar-dark .navbar-nav .nav-link.active {
-        background-color: rgba(107, 187, 247, 0.2); /* Slightly more visible hover */
-        transform: none; /* Disable transform for simplicity on mobile */
+        background-color: rgba(107, 187, 247, 0.2);
     }
 
-    /* Dropdown Menu Adjustments */
     .dropdown-menu {
-        position: absolute;
-        top: 100%;
-        right: 0;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(10px);
-        background-color: #232c3b;
-        border: 1px solid #3b4a5a;
-        border-radius: 10px;
-        padding: 12px 0;
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-        min-width: 200px;
-        z-index: 1000;
-    }
-    .nav-item.dropdown:hover .dropdown-menu {
-        display: block;
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
+        position: static; /* Inside collapse, no absolute positioning */
+        width: 100%; /* Full width in collapse */
+        border: none; /* Blend with collapse */
+        box-shadow: none; /* No extra shadow */
+        background-color: transparent; /* Match collapse */
+        padding: 0;
     }
 
     .dropdown-item {
-        font-size: 1rem; /* Readable size */
-        padding: 10px 15px; /* Larger tap area */
+        font-size: 1rem;
+        padding: 10px 15px;
         color: #e0e6ed;
     }
 
     .dropdown-item:hover {
         background-color: #34c759;
         color: #ffffff;
-        transform: none; /* Disable slide effect on mobile */
+    }
+
+    /* Ensure dropdown stays within collapse toggle */
+    .nav-item.dropdown .dropdown-menu {
+        display: none; /* Bootstrap JS toggles this */
     }
 }
 
-/* Ensure Cards Display Properly on Mobile (Unchanged) */
+/* Ensure Cards Display Properly on Mobile */
 @media (max-width: 768px) {
     .card img {
-        height: 150px; /* From your existing responsive design */
-        width: 100%; /* Full width on mobile */
+        height: 150px;
+        width: 100%;
     }
 }
 
-/* Modal Fullscreen on Mobile (Unchanged) */
+/* Modal Fullscreen on Mobile */
 @media (max-width: 768px) {
     .modal-dialog {
         max-width: 100%;
