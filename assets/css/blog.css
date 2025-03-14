@@ -142,10 +142,6 @@ body {
         padding: 12px 15px; /* Larger tap targets for mobile */
     }
 
-    .dropdown-menu {
-        width: 100%; /* Full width on mobile */
-        border-radius: 8px;
-    }
 }
 
 /* Project Cards - GitHub Dark Theme */
@@ -242,13 +238,21 @@ body {
     font-size: 4rem;
     margin-bottom: 20px;
     color: #f0f6fc;
+    animation: floatText 3s ease-in-out infinite;
 }
 
 .hero-section p {
     font-size: 1.5rem;
     margin-bottom: 30px;
     color: #8b949e;
+    animation: floatText 3s ease-in-out infinite 0.5s; /* Slight delay for stagger */
 }
+
+@keyframes floatText {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
 
 .hero-section .btn-primary {
     background-color: #238636; /* GitHub green accent */
@@ -307,3 +311,92 @@ footer a:hover {
     border-radius: 10px;
     border: none;
 }
+
+/* HERO SECTION ANIMATION START */
+/* Base Particle Styles */
+.hero-section::before,
+.hero-section::after,
+.hero-section [class*="particle-"] {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(35, 134, 54, 0.4), transparent); /* GitHub green gradient */
+    z-index: 0;
+    animation: floatParticle linear infinite;
+}
+
+/* Original Particles */
+.hero-section::before {
+    width: 15px;
+    height: 15px;
+    top: 20%;
+    left: 10%;
+    animation-duration: 6s;
+    animation-delay: 0s;
+}
+
+.hero-section::after {
+    width: 25px;
+    height: 25px;
+    top: 60%;
+    right: 15%;
+    animation-duration: 8s;
+    animation-delay: 2s;
+}
+
+/* Additional Particles (via HTML or pseudo-elements) */
+.hero-section .particle-1 {
+    width: 10px;
+    height: 10px;
+    top: 40%;
+    left: 30%;
+    animation-duration: 7s;
+    animation-delay: 1s;
+    filter: blur(1px); /* Slight blur for depth */
+}
+
+.hero-section .particle-2 {
+    width: 20px;
+    height: 20px;
+    top: 80%;
+    left: 70%;
+    animation-duration: 10s;
+    animation-delay: 3s;
+}
+
+.hero-section .particle-3 {
+    width: 12px;
+    height: 12px;
+    top: 10%;
+    right: 20%;
+    animation-duration: 5s;
+    animation-delay: 4s;
+    background: radial-gradient(circle, rgba(88, 166, 255, 0.3), transparent); /* GitHub blue variant */
+}
+
+/* Enhanced Animation */
+@keyframes floatParticle {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+    }
+    20% {
+        opacity: 0.7;
+    }
+    50% {
+        transform: translate(calc(40vw * var(--direction-x, 1)), calc(-30vh * var(--direction-y, 1))) scale(1.2);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(calc(60vw * var(--direction-x, 1)), calc(-50vh * var(--direction-y, 1))) scale(0.8);
+        opacity: 0;
+    }
+}
+
+/* Optional: Random direction using CSS custom properties */
+.hero-section::before { --direction-x: 1; --direction-y: 1; }
+.hero-section::after { --direction-x: -1; --direction-y: 1; }
+.hero-section .particle-1 { --direction-x: 0.5; --direction-y: -1; }
+.hero-section .particle-2 { --direction-x: -0.8; --direction-y: 0.5; }
+.hero-section .particle-3 { --direction-x: 1; --direction-y: -0.5; }
+/* This is where hero-section animation stops*/

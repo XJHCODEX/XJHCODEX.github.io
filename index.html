@@ -10,13 +10,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
     <script src="https://unpkg.com/scrollreveal"></script>
     <link rel="stylesheet" href="/assets/css/mobile.css">
+    <script>
+        // Set initial scroll position on mobile
+        window.addEventListener('load', () => {
+            if (window.innerWidth <= 768) {
+                window.scrollTo(0, 45); 
+            }
+        });
+    </script>
 </head>
 <body>
 
 <!-- Animated Background -->
 <div class="background-gradient"></div>
 
-<!-- Navbar with Resume Option -->
+<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container">
         <a class="navbar-brand" href="#">Jeremy Hernandez</a>
@@ -26,7 +34,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="optionsDropdown" role="button" data-bs-toggle="dropdown collapse" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="optionsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Options
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="optionsDropdown">
@@ -36,6 +44,22 @@
                         <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#dinoGameModal">Dino Game</a></li>
                         <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#resumeModal">Resume</a></li>
                     </ul>
+                </li>
+                <!-- Mobile Direct Links (hidden on desktop) -->
+                <li class="nav-item d-lg-none">
+                    <a class="nav-link" href="/blog.html">Blog</a>
+                </li>
+                <li class="nav-item d-lg-none">
+                    <a class="nav-link" href="https://github.com/XJHCODEX" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </li>
+                <li class="nav-item d-lg-none">
+                    <a class="nav-link" href="https://www.linkedin.com/in/jeremy-hernandez-1637ab229/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </li>
+                <li class="nav-item d-lg-none">
+                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#dinoGameModal">Dino Game</a>
+                </li>
+                <li class="nav-item d-lg-none">
+                    <li class="nav-item d-lg-none"><a class="nav-link" href="assets/resume/JeremyHernandezResumeP.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
                 </li>
             </ul>
         </div>
@@ -84,11 +108,22 @@
 <!-- Hero Section with Animated Gradient -->
 <header class="text-white text-center py-5 hero-section">
     <div class="hero-buttons">
-        <h1 class="display-4 animate__animated animate__fadeInDown">Welcome to My Portfolio</h1>
+        <h1 class="display-4 animate__animated animate__fadeInDown">Hi, I'm Jeremy 👋🏻</h1>       
         <p class="lead animate__animated animate__fadeInUp">Showcasing My Projects and Coding Journey</p>
         <a href="#projects" class="btn btn-outline-light btn-lg animate__animated animate__zoomIn">Explore Projects</a>
         <button class="btn btn-outline-light btn-lg animate__animated animate__zoomIn" data-bs-toggle="modal" data-bs-target="#aboutMeModal">About Me</button>
         <a href="blog.html" class="btn btn-outline-light btn-lg animate__animated animate__zoomIn">Blog</a>
+        <!-- Desktop: Modal Trigger -->
+        <a href="#" class="btn btn-outline-light btn-lg animate__animated animate__zoomIn d-none d-md-block" data-bs-toggle="modal" data-bs-target="#resumeModal">Resume</a>
+        <!-- Mobile: Direct PDF Link -->
+        <a href="assets/resume/JeremyHernandezResumeP.pdf" class="btn btn-outline-light btn-lg animate__animated animate__zoomIn d-md-none" target="_blank" rel="noopener noreferrer">Resume</a>
+
+        <span class="particle-1"></span>
+        <span class="particle-2"></span>
+        <span class="particle-3"></span>
+        <span class="particle-1"></span>
+        <span class="particle-2"></span>
+        <span class="particle-3"></span>
 
 
         <!-- Music Player Toggle Button (GitHub-themed) -->
@@ -206,7 +241,7 @@ audioPlayer.onended = () => {
             <div class="col-md-8" data-sr="enter bottom">
                 <div class="card shadow">
                     <div class="card-body">
-                        <h5 class="card-title text-center mb-4">Technical Skills</h5>
+                        <h5 class="card-title text-center mb-4">Current technologies</h5>
                         <div class="skills-list">
                             <p><strong>Cloud Technologies:</strong> Oracle Cloud Infrastructure (OCI), AWS (EC2, DynamoDB, S3, CodePipeline), Terraform, Ansible, Docker</p>
                             <p><strong>Programming & Automation:</strong> Python, SQL, Bash, Git, GitLab CI/CD</p>
@@ -416,6 +451,30 @@ document.querySelectorAll('.modal').forEach(modal => {
         musicBar.classList.toggle('active');
     }); 
 </script>
-
+<!-- Closes side bar on MOBILE -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const navbarCollapse = document.querySelector('#navbarNav');
+        const body = document.body;
+    
+        // Toggle body class for scroll lock
+        navbarToggler.addEventListener('click', () => {
+            body.classList.toggle('navbar-open');
+        });
+    
+        // Close sidebar on outside click
+        document.addEventListener('click', (event) => {
+            const isClickInsideSidebar = navbarCollapse.contains(event.target);
+            const isClickOnToggler = navbarToggler.contains(event.target);
+    
+            if (!isClickInsideSidebar && !isClickOnToggler && navbarCollapse.classList.contains('show')) {
+                navbarCollapse.classList.remove('show');
+                body.classList.remove('navbar-open');
+                navbarToggler.setAttribute('aria-expanded', 'false'); // Update toggler state
+            }
+        });
+    });
+</script>
 </body>
 </html>

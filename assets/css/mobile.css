@@ -1,7 +1,7 @@
 /* Ensure Cards Display Properly on Mobile */
 .card {
-    background-color: #161B22; /* GitHub dark mode color */
-    color: #c9d1d9; /* Light gray text for readability */
+    background-color: #161B22;
+    color: #c9d1d9;
     border: none;
     border-radius: 10px;
     transition: transform 0.2s, box-shadow 0.2s;
@@ -17,36 +17,35 @@
     object-fit: cover;
 }
 
-/* Ensure the image is centered and contained */
+/* Card Image Container */
 .card-img-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px; /* Set a specific height */
-    overflow: hidden; /* Prevent overflow */
-    background-color: #161b22; /* Optional: Background color */
+    height: 200px;
+    overflow: hidden;
+    background-color: #161b22;
 }
 
-/* Centering the image */
 .card-img-top {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain; /* Keeps the image aspect ratio */
+    object-fit: contain;
 }
 
-/* Make Sure Content Isn't Clipped */
+/* Content Clipping */
 #postContent {
     max-height: 500px;
     overflow-y: auto;
 }
 
-/* Ensure ScrollReveal Works on Mobile */
+/* ScrollReveal Fix */
 [data-sr] {
     opacity: 1 !important;
     transform: none !important;
 }
 
-/* Navbar - Base Styles */
+/* Navbar Base Styles */
 .navbar {
     padding: 15px 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -59,7 +58,6 @@
     z-index: 1030;
 }
 
-/* Navbar Brand */
 .navbar-brand {
     font-weight: 600;
     font-size: 1.5rem;
@@ -73,12 +71,11 @@
     transform: scale(1.05);
 }
 
-/* Navbar Links */
 .navbar-dark .navbar-nav .nav-link {
     color: #e0e6ed;
     font-size: 1.2rem;
     padding: 10px 15px;
-    transition: color 0.3s ease, background-color 0.3s ease
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .navbar-dark .navbar-nav .nav-link.active,
@@ -88,14 +85,13 @@
     border-radius: 6px;
 }
 
-/* Toggler Button */
 .navbar-toggler {
-    border: none; /* Remove default border */
-    padding: 8px; /* Slightly smaller for mobile */
+    border: none;
+    padding: 8px;
 }
 
-/* Mobile Adjustments for Navbar */
-@media (max-width: 768px) {
+/* Mobile Adjustments */
+@media (max-width: 991px) {
     .navbar {
         padding: 10px 15px;
     }
@@ -109,15 +105,34 @@
         font-size: 1rem;
     }
 
+    body {
+        overflow-x: hidden;
+    }
+
     .navbar-collapse {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        height: 100vh;
         background-color: #1a2230;
-        border-radius: 0 0 12px 12px;
-        padding: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        border-radius: 0;
+        padding: 20px;
+        box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
+        transition: right 0.3s ease;
+        z-index: 1031;
+    }
+
+    .navbar-collapse.show {
+        right: 0;
+    }
+
+    body.navbar-open {
+        overflow: hidden;
     }
 
     .navbar-nav {
-        text-align: center;
+        text-align: left;
     }
 
     .navbar-dark .navbar-nav .nav-link {
@@ -135,29 +150,46 @@
         background-color: rgba(107, 187, 247, 0.2);
     }
 
-    .dropdown-menu {
-        position: static; /* Inside collapse, no absolute positioning */
-        width: 100%; /* Full width in collapse */
-        border: none; /* Blend with collapse */
-        box-shadow: none; /* No extra shadow */
-        background-color: transparent; /* Match collapse */
-        padding: 0;
+    /* Hide modal trigger on mobile (optional, since HTML handles it) */
+    [data-bs-target="#resumeModal"] {
+        pointer-events: none; /* Prevent clicks if still present */
     }
 
-    .dropdown-item {
-        font-size: 1rem;
-        padding: 10px 15px;
-        color: #e0e6ed;
+    /* Cards on Mobile */
+    .card img {
+        height: 150px;
+        width: 100%;
     }
 
-    .dropdown-item:hover {
-        background-color: #34c759;
-        color: #ffffff;
+    /* Modal Fullscreen (for Dino Game, not Resume) */
+    .modal-dialog {
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+        height: 100%;
     }
 
-    /* Ensure dropdown stays within collapse toggle */
-    .nav-item.dropdown .dropdown-menu {
-        display: none; /* Bootstrap JS toggles this */
+    .modal-content {
+        height: 100vh;
+        border-radius: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-body {
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    .modal-header {
+        flex-shrink: 0;
+    }
+}
+
+/* Desktop Dropdown */
+@media (min-width: 992px) {
+    .navbar-nav .nav-item:not(.dropdown) {
+        display: none;
     }
 }
 
@@ -178,5 +210,11 @@
     .modal-content {
         height: 100vh;
         border-radius: 0;
+    }
+}
+/* Desktop Adjustments for resume */
+@media (min-width: 768px) {
+    .hero-buttons .btn[href="assets/resume/JeremyHernandezResumeP.pdf"] {
+        display: none; /* Ensure mobile link doesn’t show on desktop */
     }
 }

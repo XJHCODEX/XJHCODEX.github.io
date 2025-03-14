@@ -34,11 +34,25 @@
                         <li><a class="dropdown-item" href="https://github.com/XJHCODEX" target="_blank" rel="noopener noreferrer">GitHub</a></li>
                         <li><a class="dropdown-item" href="https://www.linkedin.com/in/jeremy-hernandez-1637ab229/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
                         <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#dinoGameModal">Dino Game</a></li>                        
-                        <li class="nav-item">
-                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#resumeModal">Resume</a>
-                        </li>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#resumeModal">Resume</a></li>
                     </ul>
                 </li>
+                                <!-- Mobile Direct Links (hidden on desktop) -->
+                                <li class="nav-item d-lg-none">
+                                    <a class="nav-link" href="/blog.html">Blog</a>
+                                </li>
+                                <li class="nav-item d-lg-none">
+                                    <a class="nav-link" href="https://github.com/XJHCODEX" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                </li>
+                                <li class="nav-item d-lg-none">
+                                    <a class="nav-link" href="https://www.linkedin.com/in/jeremy-hernandez-1637ab229/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                                </li>
+                                <li class="nav-item d-lg-none">
+                                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#dinoGameModal">Dino Game</a>
+                                </li>
+                                <li class="nav-item d-lg-none">
+                                    <li class="nav-item d-lg-none"><a class="nav-link" href="assets/resume/JeremyHernandezResumeP.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
+                                </li>
             </ul>
         </div>
     </div>
@@ -89,6 +103,12 @@
         <p class="lead animate__animated animate__fadeInUp">Sharing my thoughts, experiences, and coding adventures.</p>
         <a href="#blog-posts" class="btn btn-outline-light btn-lg animate__animated animate__zoomIn">Blog Posts</a>
     </div>
+    <span class="particle-1"></span>
+    <span class="particle-2"></span>
+    <span class="particle-3"></span>
+    <span class="particle-1"></span>
+    <span class="particle-2"></span>
+    <span class="particle-3"></span>
 </header>
 
 <!-- Blog Posts Section -->
@@ -219,6 +239,30 @@
         window.scrollTo(0, 0);
     };
 </script>
-
+<!-- Closes side bar on MOBILE -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const navbarCollapse = document.querySelector('#navbarNav');
+        const body = document.body;
+    
+        // Toggle body class for scroll lock
+        navbarToggler.addEventListener('click', () => {
+            body.classList.toggle('navbar-open');
+        });
+    
+        // Close sidebar on outside click
+        document.addEventListener('click', (event) => {
+            const isClickInsideSidebar = navbarCollapse.contains(event.target);
+            const isClickOnToggler = navbarToggler.contains(event.target);
+    
+            if (!isClickInsideSidebar && !isClickOnToggler && navbarCollapse.classList.contains('show')) {
+                navbarCollapse.classList.remove('show');
+                body.classList.remove('navbar-open');
+                navbarToggler.setAttribute('aria-expanded', 'false'); // Update toggler state
+            }
+        });
+    });
+</script>
 </body>
 </html>
